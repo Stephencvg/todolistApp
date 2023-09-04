@@ -123,7 +123,7 @@ app.get("/", (req, res) => {
     } else {
       let today = new Date();
       let day = today.toLocaleDateString("en-US", option)
-      res.render("index.ejs", { currentDay: day, toDos: items, header: "Welcome to Daily To do List", currentYear: new Date().getFullYear() })
+      res.render("index.ejs", { currentDay: "Today", toDos: items, header: "Welcome to Daily To do List", currentYear: new Date().getFullYear() })
     }
 
 
