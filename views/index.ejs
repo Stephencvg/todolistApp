@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todolist</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <%- include("head.ejs") %>
+
+    <header>
+      <h2>
+        <%=currentDay%>
+      </h2>
+    </header>
+    <main class="content">
+      <% toDos.forEach(element=> { %>
+        <form action="/delete" method="post">
+          <div class="item">
+            <input type="checkbox" value="<%=element._id%>" onChange="this.form.submit()" name="check">
+            <li class="list">
+              <%=element.name%>
+            </li>
+          </div>
+          <input type="hidden" name="listName" value="<%=currentDay%>">
+        </form>
+
+        <% }) %>
+
+          <hr>
+          <form action="/" method="post">
+            <input type="text" name="todo" autocomplete="off" placeholder="New Item" required autofocus>
+            <button type="submit" name="list" value="<%=currentDay%>">+</button>
+          </form>
+    </main>
+    <%- include("footer.ejs") %>
+</body>
+
+</html>
