@@ -14,6 +14,9 @@ const port = 3000;
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+// local database
+
 // let lists = []
 
 // connect to mongoose
@@ -33,6 +36,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 //   process.exit(1)
 // })
+
+// cloude database
 
 mongoose.connect("mongodb+srv://Stephen11:stephen@cluster0.q3lewcu.mongodb.net/todolistDB", {
   useNewUrlParser: true,
@@ -118,7 +123,7 @@ app.get("/", (req, res) => {
     } else {
       let today = new Date();
       let day = today.toLocaleDateString("en-US", option)
-      res.render("index.ejs", { currentDay: "Today", toDos: items, header: "Welcome to Daily To do List", currentYear: new Date().getFullYear() })
+      res.render("index.ejs", { currentDay: day, toDos: items, header: "Welcome to Daily To do List", currentYear: new Date().getFullYear() })
     }
 
 
